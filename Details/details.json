@@ -1,0 +1,6 @@
+{
+    "username" : "ssmith@supernus.com.full",
+    "password" : "welcome",
+    "invalidusername": "ssmith@supernus.com",
+    "invalidpassword" : "1234"
+}
