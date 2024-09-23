@@ -12,8 +12,9 @@ exports.LoginPageClass = class LoginPageClass{
        this.loginbutton = page.locator('.submit');
        this.assertlogin = page.getByLabel('Login Successful');
        this.searchplace = page.getByPlaceholder('Search');
-       this.repname = page.getByText('Sharon Smith');
-       this.ordertype = page.getByText('Order Type:');
+       this.repname = page.locator('//span[contains(text(),"Sharon Smith")]');
+       this.assettionlogin = page.locator('//div[contains(text(),"Order Type")]')
+       this.ordertype = page.locator('.head:has-text("Order Type:")');
        this.ellipses = page.locator('.profile-circle');
        this.Logout = page.getByRole('button',{name:'Log Out'});
        this.assertlogout = page.getByText('You have just logged out of OrderPoint');
@@ -21,7 +22,6 @@ exports.LoginPageClass = class LoginPageClass{
    }
    async visitwebsite(){
     await this.page.goto('/');
-
    }
 
    async Validlogin(){
@@ -29,6 +29,7 @@ exports.LoginPageClass = class LoginPageClass{
     await this.username.fill(data.username);
     await this.password.click();
     await this.password.fill(data.password);
+    //await this.page.pause();
     await this.loginbutton.click();
     }
     
@@ -40,5 +41,10 @@ exports.LoginPageClass = class LoginPageClass{
         await this.loginbutton.click();
     }
 
+    // texttoVerify= async() => {
+    //     const txt= await this.assettionlogin();
+    //     console.log(txt);
+    //     return txt.innerText();
+    //     }
 
 }   
